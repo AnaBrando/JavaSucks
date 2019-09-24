@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\Users\Aluno\Documents\_HuE_\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+790125326.index
+2001109549.index
+2221615926.index
+1793478455.index
+2555046621.index

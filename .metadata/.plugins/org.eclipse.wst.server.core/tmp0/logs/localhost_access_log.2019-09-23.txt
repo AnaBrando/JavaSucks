@@ -1,0 +1,5 @@
+127.0.0.1 - - [23/Sep/2019:21:33:28 -0400] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [23/Sep/2019:21:33:29 -0400] "GET /CrudServlet/DeleteServlet HTTP/1.1" 500 1520
+0:0:0:0:0:0:0:1 - - [23/Sep/2019:21:36:29 -0400] "GET /CrudServlet/ HTTP/1.1" 200 757
+0:0:0:0:0:0:0:1 - - [23/Sep/2019:21:37:39 -0400] "POST /CrudServlet/SaveServlet HTTP/1.1" 200 30
+0:0:0:0:0:0:0:1 - - [23/Sep/2019:21:37:46 -0400] "GET /CrudServlet/DeleteServlet HTTP/1.1" 500 1520

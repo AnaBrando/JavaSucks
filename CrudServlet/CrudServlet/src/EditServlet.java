@@ -17,15 +17,19 @@ public class EditServlet extends HttpServlet {
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
 		
-		Emp e=EmpDao.getEmployeeById(id);
+		Pizza e=PizzaDao.getPizzaId(id);
 		
 		out.print("<form action='EditServlet2' method='post'>");
 		out.print("<table>");
 		out.print("<tr><td></td><td><input type='hidden' name='id' value='"+e.getId()+"'/></td></tr>");
-		out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+e.getName()+"'/></td></tr>");
-		out.print("<tr><td>Password:</td><td><input type='password' name='password' value='"+e.getPassword()+"'/></td></tr>");
-		out.print("<tr><td>Email:</td><td><input type='email' name='email' value='"+e.getEmail()+"'/></td></tr>");
-		out.print("<tr><td>Country:</td><td>");
+		out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+e.getNome()+"'/></td></tr>");
+		out.print("<tr><td>Vendedor:</td><td><input type='password' name='password' value='"+e.getVendedor()+"'/></td></tr>");
+		out.print("<tr><td>Descricao:</td><td><input type='email' name='email' value='"+e.getDescricao()+"'/></td></tr>");
+		out.print("<tr><td>Loja:</td><td><input type='email' name='email' value='"+e.getLoja()+"'/></td></tr>");
+		out.print("<tr><td>Feedback:</td><td><input type='email' name='email' value='"+e.getFeedback()+"'/></td></tr>");
+		out.print("<tr><td>Vendido:</td><td><input type='email' name='email' value='"+e.isVendido()+"'/></td></tr>");
+		out.print("<tr><td>Preco:</td><td><input type='email' name='email' value='"+e.getPreco()+"'/></td></tr>");
+		out.print("<tr><td>Loja:</td><td>");
 		out.print("<select name='country' style='width:150px'>");
 		out.print("<option>India</option>");
 		out.print("<option>USA</option>");

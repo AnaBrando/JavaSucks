@@ -13,22 +13,28 @@ public class EditServlet2 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
-		
+		/*(nome,vendedor,descricao,loja,feedback,vendido,preco) */
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
 		String name=request.getParameter("name");
-		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		String country=request.getParameter("country");
+		String vendedor=request.getParameter("vendedor");
+		String descricao=request.getParameter("descricao");
+		String loja=request.getParameter("loja");
+		String feedback=request.getParameter("feedback");
+		boolean vendido=Boolean.parseBoolean(request.getParameter("vendido"));
+		double preco=Double.parseDouble(request.getParameter("preco"));
 		
-		Emp e=new Emp();
-		e.setId(id);
+		
+		Pizza e=new Pizza();
 		e.setName(name);
-		e.setPassword(password);
-		e.setEmail(email);
-		e.setCountry(country);
+		e.setVendedor(vendedor);
+		e.setDescricao(descricao);
+		e.setLoja(loja);
+		e.setFeedback(feedback);
+		e.isVendido();
+		e.setPreco(preco);
 		
-		int status=EmpDao.update(e);
+		int status=PizzaDao.update(e);
 		if(status>0){
 			response.sendRedirect("ViewServlet");
 		}else{

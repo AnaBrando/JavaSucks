@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SaveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		BancoDeDados banco = new BancoDeDados();
 		PrintWriter out=response.getWriter();
 		/*(nome,vendedor,descricao,loja,feedback,vendido,preco) */
 		String name=request.getParameter("name");
@@ -31,15 +32,11 @@ public class SaveServlet extends HttpServlet {
 		e.isVendido();
 		e.setPreco(preco);
 		
-		int status=PizzaDao.save(e);
-		if(status>0){
-			out.print("<p>Record saved successfully!</p>");
-			request.getRequestDispatcher("index.html").include(request, response);
-		}else{
-			out.println("Sorry! unable to save record");
-		}
 		
-		out.close();
+		banco.adiciona(e);
+		out.print("<a href=\"ViewServlet\">Pizzas</a>");
+		
+		
 	}
 
 }

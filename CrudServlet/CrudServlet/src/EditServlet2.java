@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EditServlet2 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out=response.getWriter();
+		BancoDeDados banco = new BancoDeDados();
 		/*(nome,vendedor,descricao,loja,feedback,vendido,preco) */
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
@@ -34,14 +34,9 @@ public class EditServlet2 extends HttpServlet {
 		e.isVendido();
 		e.setPreco(preco);
 		
-		int status=PizzaDao.update(e);
-		if(status>0){
-			response.sendRedirect("ViewServlet");
-		}else{
-			out.println("Sorry! unable to update record");
-		}
+		banco.adiciona(e);
 		
-		out.close();
+		
 	}
 
 }

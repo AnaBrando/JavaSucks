@@ -1,9 +1,11 @@
+import java.util.Date;
+
 public class Pizza {
 private int id;
 private String nome,vendedor,descricao,loja,feedback;
 boolean vendido;
 double preco;
-
+private Date date=new Date();
 public int getId() {
 	return id;
 }
@@ -54,6 +56,9 @@ public String getFeedback() {
 }
 public void setFeedback(String x) {
 	this.feedback=x;
+}
+public Date getDate() {
+	return date;
 }
 
 }

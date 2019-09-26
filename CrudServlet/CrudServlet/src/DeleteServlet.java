@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/DeleteServlet")
 public class DeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BancoDeDados banco = new BancoDeDados();
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
-		PizzaDao.delete(id);
+		banco.removePizza(id);
 		response.sendRedirect("ViewServlet");
 	}
 }

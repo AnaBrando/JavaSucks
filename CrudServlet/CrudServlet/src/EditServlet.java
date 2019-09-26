@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/EditServlet")
 public class EditServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BancoDeDados banco = new BancoDeDados();
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		out.println("<h1>Update Employee</h1>");
 		String sid=request.getParameter("id");
 		int id=Integer.parseInt(sid);
 		
-		Pizza e=PizzaDao.getPizzaId(id);
+		Pizza e=banco.busca(id);
 		
 		out.print("<form action='EditServlet2' method='post'>");
 		out.print("<table>");

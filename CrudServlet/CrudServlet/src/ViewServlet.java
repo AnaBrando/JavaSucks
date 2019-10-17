@@ -11,16 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Infra.BancoDeDados;
+import Model.Pizza;
 @WebServlet("/ViewServlet")
 public class ViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		BancoDeDados banco = new BancoDeDados();
-		out.println("<a href='index.html'>Add New Employee</a>");
-		out.println("<h1>Employees List</h1>");
+		out.println("<a href='formulario.jsp'>AddPizza</a>");
+		out.println("<h1>Pizzas</h1>");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
+	
+		
 		List<Pizza> list=banco.getPizza();
 		/*(nome,vendedor,descricao,loja,feedback,vendido,preco) */
 		out.print("<table border='1' width='100%'");
@@ -28,8 +32,8 @@ public class ViewServlet extends HttpServlet {
 		for(Pizza e:list){
 			out.print("<tr><td>"+e.getId()+"</td><td>"+e.getNome()+"</td><td>"+e.getVendedor()+"</td><td>"+e.getDescricao()
 			+"</td><td>"+e.getLoja()+"</td><td>"+e.getFeedback()+"</td><td>"+e.isVendido()
-			+"</td><td>"+e.getPreco()+"</td><td><a href='EditServlet?id="+e.getId()+"'>edit</a></td><td><a href='DeleteServlet?id="
-			+e.getId()+"'>delete</a></td></tr>"+"<tr><td>"+format.format(e.getDate()));
+			+"</td><td>"+e.getPreco()+"</td><td><a href='Editar?id="+e.getId()+"'>edit</a></td><td><a href='Delete?id="
+			+e.getId()+"'>delete</a></td>"+"<td>"+format.format(e.getDate())+"</td>"+"</tr>");
 		}
 		out.print("</table>");
 		

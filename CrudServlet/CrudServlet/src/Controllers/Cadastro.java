@@ -1,3 +1,4 @@
+package Controllers;
 
 
 import java.io.IOException;
@@ -8,14 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/EditServlet2")
-public class EditServlet2 extends HttpServlet {
+
+import Infra.BancoDeDados;
+import Model.Pizza;
+@WebServlet("/Cadastro")
+public class Cadastro extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		BancoDeDados banco = new BancoDeDados();
+		PrintWriter out=response.getWriter();
 		/*(nome,vendedor,descricao,loja,feedback,vendido,preco) */
-		String sid=request.getParameter("id");
-		int id=Integer.parseInt(sid);
 		String name=request.getParameter("name");
 		String vendedor=request.getParameter("vendedor");
 		String descricao=request.getParameter("descricao");
@@ -23,7 +26,6 @@ public class EditServlet2 extends HttpServlet {
 		String feedback=request.getParameter("feedback");
 		boolean vendido=Boolean.parseBoolean(request.getParameter("vendido"));
 		double preco=Double.parseDouble(request.getParameter("preco"));
-		
 		
 		Pizza e=new Pizza();
 		e.setName(name);
@@ -34,7 +36,9 @@ public class EditServlet2 extends HttpServlet {
 		e.isVendido();
 		e.setPreco(preco);
 		
+		
 		banco.adiciona(e);
+		out.print("<a href=\"ViewServlet\">Pizzas</a>");
 		
 		
 	}

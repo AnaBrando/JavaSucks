@@ -1,10 +1,29 @@
+package Infra;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import Model.Pizza;
+
+
 public class BancoDeDados {
+	private static List<Pizza> lista = new ArrayList<Pizza>();
 	
-	private static List<Pizza> lista = new ArrayList<Pizza>() ;
+	static {
+		Pizza pizza =  new Pizza();
+		pizza.setDescricao("mussarela");
+		pizza.setFeedback("mussarela");
+		pizza.setPreco(50);
+		lista.add(pizza);
+		
+		Pizza pizza2 =  new Pizza();
+		pizza2.setDescricao("calabresa");
+		pizza2.setFeedback("calabresa");
+		pizza2.setPreco(30);
+		lista.add(pizza2);
+		
+	}
+	
 	private static int incremento = 1; 
 	
 	public void adiciona(Pizza pizza) {
@@ -29,7 +48,7 @@ public class BancoDeDados {
 		}
 		
 	}
-
+	
 	public Pizza busca(int codigo) {
 		for (Pizza jogo : lista) {
 			if(jogo.getId() == codigo) {
@@ -39,4 +58,5 @@ public class BancoDeDados {
 		return null;
 	}
 
+	
 }

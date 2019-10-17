@@ -70,5 +70,7 @@ public String getFeedback() {
 public void setFeedback(String x) {
 	this.feedback=x;
 }
-
+public Date getDate() {
+	return date;
+}
 }
